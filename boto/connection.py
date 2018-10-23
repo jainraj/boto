@@ -904,10 +904,12 @@ class AWSAuthConnection(object):
         response = None
         body = None
         ex = None
+        print('RajJain: override_num_retries is {}'.format(override_num_retries))
         if override_num_retries is None:
             num_retries = config.getint('Boto', 'num_retries', self.num_retries)
         else:
             num_retries = override_num_retries
+        print('RajJain: num_retries is {}'.format(num_retries))
         i = 0
         connection = self.get_http_connection(request.host, request.port,
                                               self.is_secure)
